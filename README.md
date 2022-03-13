@@ -1,1 +1,1 @@
-# memotiur.github.io
+# memotiur@gmail.com
