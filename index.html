@@ -1,29 +1,43 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <title>Personal Website</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>Geo City Locator by geolocation-db.com</title>
 </head>
 <body>
-
-<h4>Hello World!</h4>
-
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+    <div>Country: <span id="country"></span></div>
+    <div>State: <span id="state"></span></div>
+    <div>City: <span id="city"></span></div>
+    <div>Postal: <span id="postal"></span></div>
+    <div>Latitude: <span id="latitude"></span></div>
+    <div>Longitude: <span id="longitude"></span></div>
+    <div>IP address: <span id="ipv4"></span></div>                             
 </body>
+<script>
+
+    var country = document.getElementById('country');
+    var state = document.getElementById('state');
+    var city = document.getElementById('city');
+    var postal = document.getElementById('postal');
+    var latitude = document.getElementById('latitude');
+    var longitude = document.getElementById('longitude');
+    var ip = document.getElementById('ipv4');
+
+    function callback(data)
+    {
+        country.innerHTML = data.country_name;
+        state.innerHTML = data.state;
+        city.innerHTML = data.city;
+        postal.innerHTML = data.postal;
+        latitude.innerHTML = data.latitude;
+        longitude.innerHTML = data.longitude;
+        ip.innerHTML = data.IPv4;
+    }
+
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://geolocation-db.com/json/geoip.php?jsonp=callback';
+    var h = document.getElementsByTagName('script')[0];
+    h.parentNode.insertBefore(script, h);
+
+</script> 
 </html>
